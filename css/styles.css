@@ -30,6 +30,7 @@ img {
   --button-color: #E7E9FC;
   --color-footer: #e7e9fc;
   --social-active-color: #31d0aa;
+  --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /*Main Page*/
@@ -75,6 +76,7 @@ img {
 .link:hover,
 .link:focus{
   color: var(--hover-color);
+  transition: color var(--animation);
 }
 
 .link {
@@ -171,6 +173,7 @@ img {
 .link-hover:hover,
 .link-hover:focus {
   color: var(--hover-color);
+  transition: color var(--animation);
 }
 
 .link-contacts {
@@ -193,6 +196,7 @@ img {
 
 .contact-hover:hover {
   color: var(--color-studio);
+  transition: color var(--animation);
 }
 
 .contact-hover {
@@ -208,6 +212,7 @@ img {
 .contact-hover:hover,
 .contact-hover:focus{
  color: var(--color-studio);
+ transition: color var(--animation);
 }
 
 .hero {
@@ -278,6 +283,7 @@ img {
   border: 0;
   cursor: pointer;
   border-radius: 4px;
+  transition: color var(--animation);
 }
 
 .button {
@@ -292,6 +298,7 @@ img {
   font-size: 16px;
   line-height: 1.18;
   letter-spacing: 0.04em;
+  transition: color var(--animation);
 }
 
 .button:hover,
@@ -299,6 +306,7 @@ img {
   color: var(--alternative-color);
   background-color: var(--color-studio);
   box-shadow: 0px 2px 1px rgb(46 47 66 / 8%), 0px 1px 1px rgb(46 47 66 / 16%), 0px 1px 6px rgb(46 47 66 / 8%);
+  transition: color var(--animation);
 }
 
 .main-button {
@@ -330,6 +338,7 @@ img {
   border-radius: 4px;
   display: block;
   margin-top: 48px;
+  transition: color var(--animation), box-shadow var(--animation);
 }
 
 .main-button:active {
@@ -347,6 +356,9 @@ border-radius: 4px;
 .main-button:active {
   background-color: #404bbf;
 }
+
+
+
 
 .button-portfolio{
   cursor: pointer;
@@ -575,6 +587,7 @@ border-radius: 4px;
 .href-customer:focus {
   color: var(--color-studio);
   border: 1px solid var(--color-studio);
+  transition: color var(--animation);
 }
 
 .customer-svg{
@@ -646,6 +659,7 @@ border-radius: 4px;
   justify-content: center;
   align-items: center;
   fill: var(--alternative-color);
+  transition: fill var(--animation);
 }
 
 .foot-list{
@@ -663,6 +677,7 @@ border-radius: 4px;
   border-radius: 50%;
   height: 24px;
   width: 24px;
+  transition: color var(--animation);
 }
 .footer-ico:not(:last-child) {
   margin-right: 16px;
@@ -673,8 +688,65 @@ border-radius: 4px;
   background-color: var(--social-active-color);
 }
 
+/*MODAL WINDOW*/
 
 
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+
+	width: 100%;;
+	height: 100%;
+	background: rgba(46, 47, 66, 0.4);
+
+	transition: visibility var(--animation), opacity var(--animation);
+
+}
+
+.backdrop.is-hidden{
+	opacity: 0;
+	pointer-events: none;
+	transition: visibility var(--animation), opacity var(--animation);
+}
+
+.modal {
+	width: 408px;
+	height: 576px;
+	background-color: #FCFCFC;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	
+
+}
+
+.close-button {
+	position: absolute;
+	right: 24px;
+	top: 24px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background-color: #E7E9FC;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	 
+}
+
+.close-button:hover,
+.close-button:focus {
+	box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+	
+}
 
 /*Portfolio*/
 
@@ -732,6 +804,7 @@ margin-right: 0;
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
   0px 1px 1px rgba(46, 47, 66, 0.16),
   0px 2px 1px rgba(46, 47, 66, 0.08);
+  transition: color var(--animation);
 }
 
 .link-port:hover,
@@ -739,6 +812,68 @@ margin-right: 0;
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
   0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
+
+
+
+
+
+.box {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #bdbdbd;
+  overflow: hidden;
+}
+
+.box:hover .overlay {
+  transform: translatex(0);
+}
+
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 360px;
+  height: 300px;
+  margin: 0;
+  padding-top: 40px;
+  padding-left: 32px;
+  padding-right: 32px;
+  overflow: auto;
+  transform: translate(0, 100%);
+  transition: transform var(--animation);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--color-studio);
+  color: var(--alternative-color);
+  letter-spacing: 0.02em;
+  position: absolute;
+}
+
+.overlay > p {
+  color: #fff;
+  padding: 10px;
+  margin: 0;
+  font-size: 18px;
+}
+
+.overlay code {
+  display: inline-block;
+  padding: 2px 4px;
+  border-radius: 2px;
+  background-color: #fff;
+  color: var(--alternative-color);
+}
+
+
+
+.item-works :hover .overlay,
+.link-focus:focus .overlay {
+	transform: translate(0, 0);
+}
+
 
 .example-work {
   padding-left: 16px;
@@ -783,4 +918,51 @@ margin-right: 0;
 
 .item-works > a > img {
   display: block;
+}
+
+/*ACTIVE*/
+
+
+.active-portfolio::after {
+	position: absolute;
+	bottom: 0;
+	left: -6px;
+
+	content: "";
+	display: block;
+	width: 78px;
+	height: 4px;
+	border-radius: 2px;
+	background-color: var(--color-studio);
+
+}
+
+.active-portfolio {
+	color: var(--color-studio);
+}
+
+.active-portfolio:hover,
+.active-portfolio:focus {
+	color: var(--color-studio);
+}
+
+.active-studio {
+	color: var(--color-studio);
+}
+
+.active-studio:hover,
+.active-studio:focus {
+	color: var(--color-studio);
+}
+
+.active-studio::after {
+	content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+	display: block;
+	width: 48px;
+	height: 4px;
+  border-radius: 2px;
+  background-color: var(--color-studio);
 }
