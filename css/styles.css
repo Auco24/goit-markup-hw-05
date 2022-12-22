@@ -298,7 +298,7 @@ img {
   font-size: 16px;
   line-height: 1.18;
   letter-spacing: 0.04em;
-  transition: color var(--animation);
+  transition: color var(--animation), background-color var(--animation), box-shadow var(--animation);
 }
 
 .button:hover,
